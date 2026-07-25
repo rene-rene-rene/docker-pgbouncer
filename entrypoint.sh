@@ -28,6 +28,9 @@ fi
 #   - The url we should parse
 # Returns (sets variables): DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DB_QUERY
 function parse_url() {
+  # Thanks to https://stackoverflow.com/a/17287984/146289
+
+  # Allow to pass values like dj-database-url / django-environ accept
   proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
   url="$(echo $1 | sed -e s,$proto,,g)"
 
